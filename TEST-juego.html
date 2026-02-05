@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST - Carga del Juego</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1f3a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .status {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        
+        canvas {
+            border: 3px solid #ffd700;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 TEST DE CARGA DEL JUEGO</h1>
+    
+    <div class="status" id="status">
+        <p class="warning">⏳ Cargando archivos...</p>
+    </div>
+
+    <div id="game-container"></div>
+
+    <!-- p5.js desde CDN (siempre funciona) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    
+    <script>
+        // Verificar que p5.js cargó
+        window.addEventListener('load', function() {
+            const statusDiv = document.getElementById('status');
+            
+            if (typeof p5 !== 'undefined') {
+                statusDiv.innerHTML = '<p class="success">✅ p5.js cargó correctamente</p>';
+            } else {
+                statusDiv.innerHTML = '<p class="error">❌ ERROR: p5.js no cargó</p>';
+            }
+        });
+    </script>
+
+    <!-- El código del juego -->
+    <script src="game/tpfinal2.js"></script>
+    
+    <script>
+        // Mostrar si el juego cargó
+        setTimeout(function() {
+            const statusDiv = document.getElementById('status');
+            if (typeof juego !== 'undefined') {
+                statusDiv.innerHTML += '<p class="success">✅ Código del juego cargado</p><p class="success">✅ Si ves el canvas arriba, todo funciona!</p>';
+            } else {
+                statusDiv.innerHTML += '<p class="error">❌ ERROR: No se encontró el archivo tpfinal2.js</p><p class="warning">Verifica que la carpeta "game" esté en la raíz de tu repositorio</p>';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

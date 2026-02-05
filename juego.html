@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugar | Pandora: Los Males Desatados</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ffd700;
+            --secondary-color: #c9a227;
+            --dark-bg: #0a0e27;
+            --medium-bg: #1a1f3a;
+            --light-text: #f0f0f0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
+            color: var(--light-text);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 39, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--light-text) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .game-container {
+            padding: 40px 0;
+        }
+
+        .game-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Bootstrap Card Customization */
+        .card {
+            background: rgba(42, 47, 74, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .instructions-card {
+            transition: all 0.3s ease;
+        }
+
+        .instructions-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .instructions-card .card-body {
+            color: var(--light-text);
+        }
+
+        .instructions-card small {
+            color: #ddd;
+            display: block;
+            margin-top: 5px;
+            font-size: 0.85rem;
+        }
+
+        .game-card {
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 10px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .game-canvas-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #game-canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            border-radius: 10px !important;
+            display: block !important;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-hint {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #000;
+            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: none;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            color: #000;
+        }
+
+        .footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 30px 0;
+            border-top: 3px solid var(--primary-color);
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            color: var(--light-text);
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .footer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 1.8rem;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            .instructions-card small {
+                font-size: 0.75rem;
+            }
+
+            canvas {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-box-open"></i> PANDORA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="proyecto.html">El Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="equipo.html">Equipo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="juego.html">
+                            <i class="fas fa-gamepad"></i> Jugar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <div class="container">
+            <h1 class="game-title">
+                <i class="fas fa-box-open"></i> Pandora: Los Males Desatados
+            </h1>
+
+            <!-- Bootstrap Card para el Juego -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    
+                    <!-- Instrucciones Compactas -->
+                    <div class="card instructions-card mb-4">
+                        <div class="card-body py-3">
+                            <div class="row align-items-center text-center">
+                                <div class="col-6 col-md-3 mb-2 mb-md-0">
+                                    <i class="fas fa-arrows-alt-h" style="color: var(--primary-color);"></i>
+                                    <br><small>Flechas: Mover</small>
+                                </div>
+                                <div class="col-6 col-md-3 mb-2 mb-md-0">
+                                    <i class="fas fa-play-circle" style="color: var(--primary-color);"></i>
+                                    <br><small>ESPACIO: Iniciar</small>
+                                </div>
+                                <div class="col-6 col-md-3 mb-2 mb-md-0">
+                                    <i class="fas fa-door-open" style="color: var(--primary-color);"></i>
+                                    <br><small>ESC: Menú</small>
+                                </div>
+                                <div class="col-6 col-md-3 mb-2 mb-md-0">
+                                    <strong style="color: var(--primary-color);">Objetivo:</strong>
+                                    <br><small>30 espíritus en 60s</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card del Juego -->
+                    <div class="card game-card">
+                        <div class="card-body p-4">
+                            <div class="game-canvas-wrapper">
+                                <div id="game-canvas-container"></div>
+                                <p class="game-hint mt-3 mb-0">
+                                    <i class="fas fa-hand-pointer"></i> Haz click en el juego y presiona ESPACIO para comenzar
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón Volver -->
+                    <div class="text-center mt-4">
+                        <a href="index.html" class="btn btn-lg back-button">
+                            <i class="fas fa-arrow-left"></i> Volver al Inicio
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                <a href="index.html" class="footer-link">Inicio</a> | 
+                <a href="proyecto.html" class="footer-link">Proyecto</a> | 
+                <a href="equipo.html" class="footer-link">Equipo</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- p5.js -->
+    <script src="game/p5.min.js"></script>
+    <script src="game/tpfinal2.js"></script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Proyecto | Pandora</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ffd700;
+            --secondary-color: #c9a227;
+            --dark-bg: #0a0e27;
+            --medium-bg: #1a1f3a;
+            --light-text: #f0f0f0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
+            color: var(--light-text);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 39, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--light-text) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .page-header {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: linear-gradient(rgba(10, 14, 39, 0.8), rgba(10, 14, 39, 0.8)), 
+                        url('assets/fondo.png') center/cover;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .content-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .content-card {
+            background: rgba(42, 47, 74, 0.6);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .timeline-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin: 5px;
+            border: 1px solid var(--primary-color);
+            font-weight: 500;
+        }
+
+        .myth-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .myth-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 40px 0 20px;
+            border-top: 3px solid var(--primary-color);
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            color: var(--light-text);
+            margin: 10px 0;
+        }
+
+        .footer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-box-open"></i> PANDORA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="proyecto.html">El Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="equipo.html">Equipo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="juego.html">
+                            <i class="fas fa-gamepad"></i> Jugar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">El Proyecto</h1>
+            <p class="lead">Desarrollo de una aventura gráfica interactiva</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <!-- Temática -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-scroll"></i> Temática: El Mito de Pandora
+            </h2>
+            
+            <div class="myth-box">
+                <h4><i class="fas fa-book"></i> La Historia</h4>
+                <p>
+                    Según la mitología griega, Pandora fue la primera mujer creada por los dioses. Zeus le entregó una caja (o pithos) 
+                    con la advertencia de que nunca debía abrirla. Sin embargo, vencida por la curiosidad, Pandora abrió la caja 
+                    liberando todos los males del mundo: enfermedades, dolor, tristeza, envidia y muerte.
+                </p>
+                <p class="mb-0">
+                    Al darse cuenta de su error, Pandora cerró rápidamente la caja, pero solo logró retener un último espíritu: 
+                    <strong style="color: var(--primary-color);">la Esperanza</strong>, que quedó atrapada dentro como el último 
+                    consuelo para la humanidad.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3 style="color: var(--primary-color); margin-bottom: 20px;">Adaptación al Juego</h3>
+                <p>
+                    En nuestra interpretación interactiva, el jugador asume el rol de Pandora en un intento desesperado por 
+                    remediar su error. El objetivo es recapturar los espíritus malignos antes de que escapen definitivamente 
+                    al mundo.
+                </p>
+                <p class="mb-0">
+                    El juego representa la lucha entre el bien y el mal a través de dos tipos de espíritus: los malignos 
+                    (que deben ser atrapados) y los benignos (que representan virtudes que no deben ser capturadas). Esta 
+                    mecánica refleja la complejidad moral del mito original.
+                </p>
+            </div>
+        </section>
+
+        <!-- Proceso de Producción -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i> Proceso de Producción
+            </h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>1. Conceptualización e Investigación</h4>
+                        <p>
+                            Investigamos el mito de Pandora y decidimos adaptar la historia a un formato de juego arcade. 
+                            Definimos la mecánica principal: atrapar espíritus malignos mientras se evitan los buenos, 
+                            todo bajo presión de tiempo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>2. Diseño y Arte</h4>
+                        <p>
+                            Creamos los sprites de Pandora, los espíritus buenos (azul claro) y malignos (rojo oscuro), 
+                            así como el fondo inspirado en la arquitectura griega antigua. El diseño visual busca capturar 
+                            la atmósfera mítica y misteriosa del relato original.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>3. Desarrollo con POO</h4>
+                        <p>
+                            Implementamos el juego utilizando Programación Orientada a Objetos en JavaScript con p5.js. 
+                            Creamos clases para: Juego, Jugador, ObjetoBueno, ObjetoMalo, y diferentes Pantallas 
+                            (Menu, Jugando, Ganado, Perdido, Creditos), siguiendo los principios de encapsulación y modularidad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>4. Testing y Balance</h4>
+                        <p>
+                            Ajustamos la dificultad del juego mediante pruebas iterativas. Calibramos la velocidad de caída 
+                            de los espíritus, la frecuencia de aparición y el tiempo límite para lograr un desafío equilibrado 
+                            pero alcanzable.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>5. Desarrollo del Sitio Web</h4>
+                        <p>
+                            Creamos este sitio web usando Bootstrap como framework, implementando navegación entre páginas, 
+                            diseño responsive y una presentación profesional del proyecto que incluye información sobre la 
+                            temática, el proceso y el equipo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Características Técnicas -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-list-check"></i> Características Técnicas del Juego
+            </h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="content-card">
+                        <h4 style="color: var(--primary-color);">
+                            <i class="fas fa-layer-group"></i> Arquitectura
+                        </h4>
+                        <ul>
+                            <li>Patrón de diseño basado en estados</li>
+                            <li>Sistema de gestión de assets</li>
+                            <li>Detección de colisiones precisa</li>
+                            <li>Generación dinámica de objetos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-card">
+                        <h4 style="color: var(--primary-color);">
+                            <i class="fas fa-gamepad"></i> Gameplay
+                        </h4>
+                        <ul>
+                            <li>Dificultad progresiva</li>
+                            <li>Sistema de puntuación</li>
+                            <li>Límite de tiempo</li>
+                            <li>Controles responsivos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="footer-text">
+                        <a href="index.html" class="footer-link">Inicio</a> | 
+                        <a href="equipo.html" class="footer-link">Equipo</a> | 
+                        <a href="juego.html" class="footer-link">Jugar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

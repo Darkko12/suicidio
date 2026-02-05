@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo | Pandora</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ffd700;
+            --secondary-color: #c9a227;
+            --dark-bg: #0a0e27;
+            --medium-bg: #1a1f3a;
+            --light-text: #f0f0f0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
+            color: var(--light-text);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 39, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--light-text) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .page-header {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: linear-gradient(rgba(10, 14, 39, 0.8), rgba(10, 14, 39, 0.8)), 
+                        url('assets/fondo.png') center/cover;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .member-card {
+            background: rgba(42, 47, 74, 0.6);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .member-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 4rem;
+            color: #000;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .member-name {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .member-id {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .member-role {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px;
+            border: 1px solid var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        .roles-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .member-description {
+            text-align: center;
+            color: #ddd;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(42, 47, 74, 0.6);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 40px 0 20px;
+            border-top: 3px solid var(--primary-color);
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            color: var(--light-text);
+            margin: 10px 0;
+        }
+
+        .footer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .member-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-box-open"></i> PANDORA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="proyecto.html">El Proyecto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="equipo.html">Equipo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="juego.html">
+                            <i class="fas fa-gamepad"></i> Jugar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Nuestro Equipo</h1>
+            <p class="lead">Los creadores detrás de Pandora: Los Males Desatados</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <!-- Team Members -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <h3 class="member-name">Darkko Nair Jorajuria Etchevarne</h3>
+                    <p class="member-id">Legajo: 122739/6</p>
+                    
+                    <div class="roles-container">
+                        <span class="member-role">
+                            <i class="fas fa-code"></i> Programador
+                        </span>
+                        <span class="member-role">
+                            <i class="fas fa-project-diagram"></i> Arquitectura
+                        </span>
+                        <span class="member-role">
+                            <i class="fas fa-gamepad"></i> Game Design
+                        </span>
+                    </div>
+                    
+                    <p class="member-description">
+                        Responsable de la implementación del sistema de juego utilizando POO, desarrollo de la lógica 
+                        de colisiones, sistema de puntuación y gestión de estados. También trabajó en el balance de 
+                        dificultad y la optimización del código.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="member-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="member-name">Seanna Ursula Sarlangue</h3>
+                    <p class="member-id">Legajo: 122892/5</p>
+                    
+                    <div class="roles-container">
+                        <span class="member-role">
+                            <i class="fas fa-palette"></i> Diseño Visual
+                        </span>
+                        <span class="member-role">
+                            <i class="fas fa-pen-nib"></i> Arte
+                        </span>
+                        <span class="member-role">
+                            <i class="fas fa-code"></i> Programadora
+                        </span>
+                    </div>
+                    
+                    <p class="member-description">
+                        Encargada del diseño visual del juego, creación de sprites y assets gráficos. También participó 
+                        en la programación del sistema de pantallas, implementación de la interfaz de usuario y desarrollo 
+                        del concepto narrativo basado en el mito griego.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Info -->
+        <div class="info-card">
+            <h3><i class="fas fa-graduation-cap"></i> Contexto Académico</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong style="color: var(--primary-color);">Materia:</strong> Programación Orientada a Objetos</p>
+                    <p><strong style="color: var(--primary-color);">Trabajo:</strong> Práctico Final - Parte 2</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong style="color: var(--primary-color);">Temática:</strong> Mitología Griega - La Caja de Pandora</p>
+                    <p><strong style="color: var(--primary-color);">Tipo:</strong> Aventura Gráfica Interactiva</p>
+                    <p><strong style="color: var(--primary-color);">Plataforma:</strong> Web (JavaScript/p5.js)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collaboration -->
+        <div class="info-card">
+            <h3><i class="fas fa-handshake"></i> Metodología de Trabajo</h3>
+            <p>
+                El desarrollo del proyecto se realizó de manera colaborativa, utilizando metodologías ágiles y 
+                distribución de tareas según las fortalezas de cada integrante. La comunicación constante y las 
+                revisiones de código permitieron mantener un estándar de calidad uniforme a lo largo del proyecto.
+            </p>
+            <p class="mb-0">
+                Ambos integrantes contribuyeron activamente en todas las fases del proyecto, desde la conceptualización 
+                hasta la implementación final y el desarrollo de este sitio web, asegurando un resultado cohesivo y profesional.
+            </p>
+        </div>
+
+        <!-- Tools -->
+        <div class="info-card">
+            <h3><i class="fas fa-toolbox"></i> Herramientas de Desarrollo</h3>
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fab fa-js fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fas fa-cube fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>p5.js</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fab fa-html5 fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fab fa-css3-alt fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>CSS3</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fab fa-bootstrap fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>Bootstrap</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fab fa-github fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>GitHub</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fas fa-paint-brush fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>Diseño Gráfico</p>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <i class="fas fa-laptop-code fa-3x mb-2" style="color: var(--primary-color);"></i>
+                    <p>VS Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="footer-text">
+                        <a href="index.html" class="footer-link">Inicio</a> | 
+                        <a href="proyecto.html" class="footer-link">Proyecto</a> | 
+                        <a href="juego.html" class="footer-link">Jugar</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

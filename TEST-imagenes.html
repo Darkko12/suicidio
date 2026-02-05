@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST - Imágenes</title>
+    <style>
+        body {
+            background: #1a1f3a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .image-test {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        img {
+            max-width: 200px;
+            border: 2px solid #ffd700;
+            margin: 10px;
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .success { background: #4CAF50; }
+        .error { background: #f44336; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🖼️ TEST DE IMÁGENES</h1>
+        <p>Este archivo verifica si las imágenes se pueden cargar correctamente</p>
+        
+        <div class="image-test">
+            <h3>Fondo (fondo.png)</h3>
+            <img src="assets/fondo.png" alt="Fondo" onload="reportSuccess('fondo')" onerror="reportError('fondo')">
+            <div id="status-fondo" class="status">⏳ Cargando...</div>
+        </div>
+        
+        <div class="image-test">
+            <h3>Jugador (pandoraplayer.png)</h3>
+            <img src="assets/pandoraplayer.png" alt="Pandora" onload="reportSuccess('jugador')" onerror="reportError('jugador')">
+            <div id="status-jugador" class="status">⏳ Cargando...</div>
+        </div>
+        
+        <div class="image-test">
+            <h3>Espíritu Bueno (cosobueno.png)</h3>
+            <img src="assets/cosobueno.png" alt="Bueno" onload="reportSuccess('bueno')" onerror="reportError('bueno')">
+            <div id="status-bueno" class="status">⏳ Cargando...</div>
+        </div>
+        
+        <div class="image-test">
+            <h3>Espíritu Malo (cosomalo.png)</h3>
+            <img src="assets/cosomalo.png" alt="Malo" onload="reportSuccess('malo')" onerror="reportError('malo')">
+            <div id="status-malo" class="status">⏳ Cargando...</div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <h3>📍 Rutas esperadas:</h3>
+            <p style="font-family: monospace; color: #ffd700;">
+                https://TU-USUARIO.github.io/TU-REPO/assets/fondo.png<br>
+                https://TU-USUARIO.github.io/TU-REPO/assets/pandoraplayer.png<br>
+                https://TU-USUARIO.github.io/TU-REPO/assets/cosobueno.png<br>
+                https://TU-USUARIO.github.io/TU-REPO/assets/cosomalo.png
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function reportSuccess(name) {
+            const statusDiv = document.getElementById('status-' + name);
+            statusDiv.className = 'status success';
+            statusDiv.textContent = '✅ Cargó correctamente';
+        }
+        
+        function reportError(name) {
+            const statusDiv = document.getElementById('status-' + name);
+            statusDiv.className = 'status error';
+            statusDiv.textContent = '❌ ERROR: No se pudo cargar';
+        }
+    </script>
+</body>
+</html>
