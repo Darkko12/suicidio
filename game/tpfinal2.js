@@ -479,7 +479,6 @@ class ObjetoMalo {
 
 
 class Assets {
-class Assets {
   constructor() {
     this.imagenes = {};
     this.cargaCompleta = false;
